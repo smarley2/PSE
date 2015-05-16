@@ -1,0 +1,1 @@
+"./Example_2802xAdcSoc.obj" "C:/projetos/PSE/trunk/f2802x_headers/cmd/F2802x_Headers_nonBIOS.cmd" "C:/projetos/PSE/trunk/f2802x_common/lib/driverlib.lib" -l"C:/projetos/PSE/trunk/WorkSpace/adc_soc1/../../f2802x_common/cmd/F2802x_generic_ram.cmd" -l"rts2800_ml.lib" -l"IQmath.lib" 
