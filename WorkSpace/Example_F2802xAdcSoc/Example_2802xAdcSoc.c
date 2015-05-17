@@ -26,7 +26,7 @@
 //	Definição dos fundos de escala dos AD´s
 //
 //	Fundo de escala da medição de corrente - 4096 bits - 15A (0,003662109375A/bit)
-//	Corrente nominal - 2730 bits - 9,99A
+//	Corrente nominal i_limit = 2730; bits - 9,99A
 //
 //	Fundo de escala da tensão - 4096 bits - 50V (0,01220703125V/bit)
 //
@@ -60,7 +60,7 @@
 #include "f2802x_common/include/wdog.h"
 
 // Configuração do registrados do PWM
-#define EPWM1_TIMER_TBPRD  2000  // Período do PWM
+#define EPWM1_TIMER_TBPRD  1000  // Período do PWM
 //////////////////////////////////////////////////
 
 // Interrupções.
@@ -93,6 +93,7 @@ unsigned long estado = 1;
 unsigned long tensao = 0, corrente = 0, potenciometro = 0, pot = 0, j = 1, count_15min = 0;
 unsigned long temperatura = 0, tensao_pv_min = 0, tensao_pv = 0, count_s = 0, count_init_delay = 15;
 unsigned long tensao_bat = 0, tensao_bat_max = 0, tensao_bat_nom = 0, tensao_bat_min = 0;
+unsigned long i_limit = 2730, pot_anterior = 0, PWM = 0, PWM_max = 0;
 /////////////////////////////////////
 
 ADC_Handle myAdc;
@@ -179,6 +180,9 @@ void main(void)
     // Enable Global realtime interrupt DBGM
     CPU_enableDebugInt(myCpu);
 
+
+	CLK_disablePwmClock(myClk, PWM_Number_1);
+	CLK_disablePwmClock(myClk, PWM_Number_2);
     // Detecta se o sistema é 12 ou 24V.
     detecta_bat();
 
@@ -271,6 +275,9 @@ void verifica_painel()
     if(tensao_pv>tensao_pv_min)
     {
     	estado = 2;
+    	pot_anterior = 0;
+    	PWM = 0;
+    	PWM_max = 0;
     	count_init_delay = 0;
 		j = 1;
     	CLK_enablePwmClock(myClk, PWM_Number_1);
@@ -286,6 +293,7 @@ void verifica_painel()
 
 __interrupt void adc_isr(void)
 {
+	unsigned long PWM_SOC = 0;
 
 	// Tensão
 	tensao = ADC_readResult(myAdc, ADC_ResultNumber_1);
@@ -300,11 +308,20 @@ __interrupt void adc_isr(void)
 	{
 	case 2: rampa();
 				   break;
-	case 3: pert_obs();
+	case 3: aguarda();
 				   break;
-	case 4: aguarda();
+	case 4: pert_obs();
 				   break;
 	}
+
+	PWM_SOC = PWM / 2;
+	PWM_setCmpA(myPwm1, PWM_SOC);
+    PWM_setCmpB(myPwm1, PWM);
+
+    if (corrente>410) // Maior que 1,5A começa a retificação síncrona
+    {PWM_setCmpA(myPwm2, PWM);}
+    else{PWM_setCmpA(myPwm2, 0);}
+
 
     // Clear ADCINT1 flag reinitialize for next SOC
     ADC_clearIntFlag(myAdc, ADC_IntNumber_1);
@@ -316,12 +333,35 @@ __interrupt void adc_isr(void)
 
 void rampa()
 {
+	if(pot>pot_anterior){PWM_max = PWM;}
 
+	PWM = PWM + 1;
+
+	pot_anterior = pot;
+
+	if(PWM > EPWM1_TIMER_TBPRD)
+	{
+		estado = 3; // Hold
+		PWM = PWM_max;
+	}
+
+/*	if(corrente > i_limit)
+	{
+		estado = 2; // Hold
+		PWM = PWM_max - 50;
+	}*/
 }
 
 void aguarda()
 {
-
+	delay_loop();
+	delay_loop();
+	delay_loop();
+	delay_loop();
+	delay_loop();
+	delay_loop();
+	delay_loop();
+	estado = 4;
 }
 
 void pert_obs()
@@ -492,7 +532,7 @@ void Pwm_init()
 
     PWM_enableSocAPulse(myPwm1);                                         // Enable SOC on A group
     PWM_setSocAPulseSrc(myPwm1, PWM_SocPulseSrc_CounterEqualCmpAIncr);   // Select SOC from from CPMA on upcount
-    PWM_setSocAPeriod(myPwm1, PWM_SocPeriod_FirstEvent);                 // Generate pulse on 1st event
+    PWM_setSocAPeriod(myPwm1, PWM_SocPeriod_ThirdEvent);                 // Generate pulse on 1st event
 
 //////////////////////////////////////////////////////////////
     // PWM do retificador síncrono
