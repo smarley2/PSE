@@ -51,7 +51,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=DGNDMAQX
+DocumentUniqueId=QMYRUOKE
 
 [Document2]
 DocumentPath=uC.SchDoc
@@ -102,7 +102,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=FYVXVYWF
+DocumentUniqueId=DQTBKURO
 
 [Document5]
 DocumentPath=Voltage_measure.SchDoc
@@ -119,7 +119,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=SMYYURKM
+DocumentUniqueId=TBTBWGNT
 
 [Document6]
 DocumentPath=Driver_SW.SchDoc
@@ -153,7 +153,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=RNHECEYD
+DocumentUniqueId=RXNSBHQL
 
 [Document8]
 DocumentPath=Driver_rect.SchDoc
