@@ -24,7 +24,7 @@
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROJECT.Texas Instruments XDS100v3 USB Debug Probe_0/C28xx" value="Example_F2802xAdcSoc"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_TARGET_CONFIG" value="C:\projetos\PSE\trunk\WorkSpace\Example_F2802xAdcSoc\targetConfigs\TMS320F28027.ccxml"/>
 <booleanAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_USE_DEFAULT_TARGET_CONFIG" value="false"/>
-<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Texas Instruments XDS100v1 USB Debug Probe/C28xx" value="C:/projetos\PSE\trunk\WorkSpace\Example_F2802xAdcSoc\RAM\Example_F2802xAdcSoc.out"/>
+<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Texas Instruments XDS100v1 USB Debug Probe/C28xx" value="C:/projetos\PSE\trunk\WorkSpace\Example_F2802xAdcSoc\Flash\Example_F2802xAdcSoc.out"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/Example_F2802xAdcSoc"/>
 </listAttribute>

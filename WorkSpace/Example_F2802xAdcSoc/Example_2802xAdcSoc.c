@@ -90,10 +90,11 @@ unsigned long estado = 1;
 // 3 - track - pertubar e observa
 // 4 - hold - aguarda com o mesmo duty cicle
 
-unsigned long tensao = 0, corrente = 0, potenciometro = 0, pot = 0, j = 1, count_15min = 0;
+unsigned long tensao = 0, corrente = 0, potenciometro = 0, pot = 0, count_15min = 0;
 unsigned long temperatura = 0, tensao_pv_min = 0, tensao_pv = 0, count_s = 0, count_init_delay = 15;
 unsigned long tensao_bat = 0, tensao_bat_max = 0, tensao_bat_nom = 0, tensao_bat_min = 0;
-unsigned long i_limit = 2730, pot_anterior = 0, PWM = 0, PWM_max = 0;
+unsigned long i_limit = 2730;
+long PWM = 0;
 /////////////////////////////////////
 
 ADC_Handle myAdc;
@@ -260,7 +261,9 @@ __interrupt void cpu_timer0_isr(void)
 // Desliga o PWM e verifica se a tensão do painel está em nível adequado.
 void verifica_painel()
 {
+	static unsigned long j = 1;
 	unsigned int i = 0;
+
 	CLK_disablePwmClock(myClk, PWM_Number_1);
 	CLK_disablePwmClock(myClk, PWM_Number_2);
 	delay_loop();
@@ -275,9 +278,7 @@ void verifica_painel()
     if(tensao_pv>tensao_pv_min)
     {
     	estado = 2;
-    	pot_anterior = 0;
     	PWM = 0;
-    	PWM_max = 0;
     	count_init_delay = 0;
 		j = 1;
     	CLK_enablePwmClock(myClk, PWM_Number_1);
@@ -293,7 +294,9 @@ void verifica_painel()
 
 __interrupt void adc_isr(void)
 {
-	unsigned long PWM_SOC = 0;
+	static unsigned long PWM_SOC = 0;
+
+	GPIO_setHigh(myGpio,GPIO_Number_3);	//Utilizado para medir o tempo dentro da interrupção
 
 	// Tensão
 	tensao = ADC_readResult(myAdc, ADC_ResultNumber_1);
@@ -314,6 +317,11 @@ __interrupt void adc_isr(void)
 				   break;
 	}
 
+	if(PWM > EPWM1_TIMER_TBPRD)
+	{PWM = EPWM1_TIMER_TBPRD;}
+	if(PWM < 0)
+	{PWM = 0;}
+
 	PWM_SOC = PWM / 2;
 	PWM_setCmpA(myPwm1, PWM_SOC);
     PWM_setCmpB(myPwm1, PWM);
@@ -327,45 +335,81 @@ __interrupt void adc_isr(void)
     ADC_clearIntFlag(myAdc, ADC_IntNumber_1);
     // Acknowledge interrupt to PIE
     PIE_clearInt(myPie, PIE_GroupNumber_10);
+
+	GPIO_setLow(myGpio,GPIO_Number_3);	//Utilizado para medir o tempo dentro da interrupção
+
     return;
 }
 
 
 void rampa()
 {
-	if(pot>pot_anterior){PWM_max = PWM;}
+	static unsigned long  PWM_max = 0, pot_max = 0, i = 0;
 
-	PWM = PWM + 1;
-
-	pot_anterior = pot;
-
-	if(PWM > EPWM1_TIMER_TBPRD)
+	i++;	// Delay para estabilizar o conversor após a mudança do ciclo ativo durante o rastreamento.
+	if(i == 20)	// Delay de aprox 1,33s. // 15000 ciclos por segundo. Possui 1000 incrementos no PWM.
 	{
-		estado = 3; // Hold
-		PWM = PWM_max;
+		i=0;
+		if(pot > pot_max){PWM_max = PWM; pot_max = pot;}
+
+		PWM = PWM + 1;
+
+		if(PWM > (EPWM1_TIMER_TBPRD - 1))
+		{
+			estado = 3; // Hold
+			PWM = PWM_max;
+			PWM_max = 0;
+			pot_max = 0;
+			i=0;
+		}
+
+	/*	if(corrente > i_limit)
+		{
+			estado = 2; // Hold
+			PWM = PWM_max - 50;
+			PWM_max = 0;
+			pot_max = 0;
+			i=0;
+		}*/
 	}
-
-/*	if(corrente > i_limit)
-	{
-		estado = 2; // Hold
-		PWM = PWM_max - 50;
-	}*/
 }
 
 void aguarda()
 {
-	delay_loop();
-	delay_loop();
-	delay_loop();
-	delay_loop();
-	delay_loop();
-	delay_loop();
-	delay_loop();
-	estado = 4;
+	static unsigned long i = 0;
+
+	i++;	// Delay para estabilizar o conversor após fixar no ciclo ativo de máxima potência encontrado.
+	if(i > 1500)	// Aguarda 100ms - 4 * 1500 = 6000 ciclos.
+	{
+		estado = 4;
+		i = 0;
+	}
 }
 
 void pert_obs()
 {
+	static unsigned long  i = 0, pot_anterior = 0, limita = 0;
+	static long step_pwm = 1;
+
+	i++;
+	if(i == 50) // Delay para estabilizar o conversor após a mudança do ciclo ativo.
+	{			// Interrupção a 60kHz/4 = 15kHz. 1 ciclo de delay ~= 66,6us
+		i = 0;
+
+		if(pot<pot_anterior)
+		{step_pwm = step_pwm * (-1);}
+
+		// Se a corrente passar do Limite, soma limita na conta abaixo.
+		// Como limita é maior que step_pwm, o valor do PWM será decrementado enquanto a corrente estiver acima do limite.
+/*		if(corrente > i_limit)
+		{limita = 3;}else{limita = 0;}
+
+		if(corrente > (i_limit + 100)){PWM = PWM - 50;}*/
+
+		PWM = PWM + step_pwm - limita;
+
+		pot_anterior = pot;
+	}
 
 }
 
@@ -401,7 +445,7 @@ void temp_interna(void)
 
 __interrupt void cpu_timer1_isr(void)
 {
-	GPIO_toggle(myGpio,GPIO_Number_3);	// tougle LED a cada meio segundo
+//	GPIO_toggle(myGpio,GPIO_Number_3);	// tougle LED a cada meio segundo
     PIE_clearInt(myPie, PIE_GroupNumber_1);
 }
 
@@ -510,8 +554,8 @@ void Pwm_init()
     PWM_disableCounterLoad(myPwm1);                         // Disable phase loading
     PWM_setPhase(myPwm1, 0x0000);                           // Phase is 0
     PWM_setCount(myPwm1, 0x0000);                           // Clear counter
-    PWM_setHighSpeedClkDiv(myPwm1, PWM_HspClkDiv_by_2);     // Clock ratio to SYSCLKOUT
-    PWM_setClkDiv(myPwm1, PWM_ClkDiv_by_2);
+    PWM_setHighSpeedClkDiv(myPwm1, PWM_HspClkDiv_by_1);     // Clock ratio to SYSCLKOUT
+    PWM_setClkDiv(myPwm1, PWM_ClkDiv_by_1);
 
     // Setup shadow register load on ZERO
     PWM_setShadowMode_CmpA(myPwm1, PWM_ShadowMode_Shadow);
@@ -546,8 +590,8 @@ void Pwm_init()
     PWM_disableCounterLoad(myPwm2);                         // Disable phase loading
     PWM_setPhase(myPwm2, 0x0000);                           // Phase is 0
     PWM_setCount(myPwm2, 0x0000);                           // Clear counter
-    PWM_setHighSpeedClkDiv(myPwm2, PWM_HspClkDiv_by_2);     // Clock ratio to SYSCLKOUT
-    PWM_setClkDiv(myPwm2, PWM_ClkDiv_by_2);
+    PWM_setHighSpeedClkDiv(myPwm2, PWM_HspClkDiv_by_1);     // Clock ratio to SYSCLKOUT
+    PWM_setClkDiv(myPwm2, PWM_ClkDiv_by_1);
 
     // Setup shadow register load on ZERO
     PWM_setShadowMode_CmpA(myPwm2, PWM_ShadowMode_Shadow);
