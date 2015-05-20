@@ -1,6 +1,6 @@
 E = 18V
-C = .1mF
+C = 10mF
 L = .1mH
-R = 1ohm
+R = 10ohm
 fs = 50kHz
 Vt = 10V
