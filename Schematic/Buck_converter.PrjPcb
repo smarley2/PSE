@@ -1,12 +1,13 @@
 [Design]
 Version=1.0
-HierarchyMode=0
+HierarchyMode=2
 ChannelRoomNamingStyle=0
+OutputPath=
 LogFolderPath=
 ReleasesFolder=
 ReleaseVaultGUID=
 ReleaseVaultName=
-ChannelDesignatorFormatString=$Component_$RoomName
+ChannelDesignatorFormatString=$Component_$ChannelIndex
 ChannelRoomLevelSeperator=_
 OpenOutputs=1
 ArchiveProject=0
@@ -28,8 +29,6 @@ NameNetsHierarchically=0
 PowerPortNamesTakePriority=1
 PushECOToAnnotationFile=1
 DItemRevisionGUID=
-ReportSuppressedErrorsInMessages=0
-OutputPath=
 
 [Document1]
 DocumentPath=Buck_converter.SchDoc
@@ -176,7 +175,23 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document10]
-DocumentPath=Conv_buck_R0.PcbLib
+DocumentPath=FAN.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=9
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+
+[Document11]
+DocumentPath=Conv_buck_R1.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -191,24 +206,8 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document11]
-DocumentPath=FAN.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=9
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
 [Document12]
-DocumentPath=PCB1.PcbDoc
+DocumentPath=Buck_converter.Annotation
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -239,30 +238,26 @@ ParamVariationCount=0
 DocumentPath=Conv_buck_R0.PcbDoc.htm
 DItemRevisionGUID=
 
+[GeneratedDocument2]
+DocumentPath=PCB1.PcbDoc.htm
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Default Configuration
 ParameterCount=0
 ConstraintFileCount=0
-ReleaseItemId=
-CurrentRevision=
-Variant=[No Variations]
-GenerateBOM=0
-OutputJobsCount=0
 
-[Configuration2]
-Name=Default Configuration
-ParameterCount=0
-ConstraintFileCount=0
+[PCBConfiguration1]
 ReleaseItemId=
 CurrentRevision=
+Name=Default Configuration
 Variant=[No Variations]
 GenerateBOM=0
-OutputJobsCount=0
 
 [OutputGroup1]
 Name=Netlist Outputs
 Description=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=PDF995
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=CadnetixNetlist
 OutputName1=Cadnetix Netlist
@@ -393,7 +388,7 @@ OutputDefault25=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=PDF995
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=AdvSimNetlist
 OutputName1=Mixed Sim
@@ -414,7 +409,7 @@ OutputDefault3=0
 [OutputGroup3]
 Name=Documentation Outputs
 Description=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=PDF995
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Assembler Source Print
 OutputName1=Assembler Source Prints
@@ -518,17 +513,11 @@ OutputDocumentPath17=
 OutputVariantName17=
 OutputDefault17=0
 PageOptions17=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=A4|PrintScaleMode=1
-OutputType18=PCBLIB Print
-OutputName18=PCBLIB Prints
-OutputDocumentPath18=
-OutputVariantName18=
-OutputDefault18=0
-PageOptions18=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PaperKind=A4|PrintScaleMode=1
 
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=PDF995
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Assembly
 OutputName1=Assembly Drawings
@@ -550,7 +539,7 @@ OutputDefault3=0
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=PDF995
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=CompositeDrill
 OutputName1=Composite Drill Drawing
@@ -606,7 +595,7 @@ OutputDefault9=0
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=PDF995
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=BOM_PartType
 OutputName1=Bill of Materials
@@ -643,7 +632,7 @@ OutputDefault6=0
 [OutputGroup7]
 Name=Other Outputs
 Description=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=PDF995
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Text Print
 OutputName1=Text Print
@@ -823,7 +812,7 @@ PageOptions29=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup8]
 Name=Validation Outputs
 Description=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=PDF995
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Design Rules Check
 OutputName1=Design Rules Check
@@ -852,18 +841,13 @@ OutputDefault4=0
 [OutputGroup9]
 Name=Export Outputs
 Description=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=PDF995
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=ExportSTEP
 OutputName1=Export STEP
 OutputDocumentPath1=
 OutputVariantName1=[No Variations]
 OutputDefault1=0
-OutputType2=ExportIDF
-OutputName2=Export IDF
-OutputDocumentPath2=
-OutputVariantName2=
-OutputDefault2=0
 
 [Modification Levels]
 Type1=1
@@ -940,10 +924,6 @@ Type71=1
 Type72=1
 Type73=1
 Type74=1
-Type75=1
-Type76=1
-Type77=1
-Type78=1
 
 [Difference Levels]
 Type1=1
@@ -986,9 +966,6 @@ Type37=1
 Type38=1
 Type39=1
 Type40=1
-Type41=1
-Type42=1
-Type43=1
 
 [Electrical Rules Check]
 Type1=1
@@ -1113,19 +1090,105 @@ L17=WNNNNNNNWNNNWWWWN
 
 [Annotate]
 SortOrder=3
-SortLocation=0
 MatchParameter1=Comment
 MatchStrictly1=1
 MatchParameter2=Library Reference
 MatchStrictly2=1
-PhysicalNamingFormat=$Component_$RoomName
+PhysicalNamingFormat=$ComponentPrefix$GlobalIndex
 GlobalIndexSortOrder=3
-GlobalIndexSortLocation=0
+UniqueIDPath0=
+DocumentName0=Buck_converter.SchDoc
+IsEnabled0=1
+SelectionScope0=All
+Order0=1
+IndexEnabled0=0
+IndexStartValue0=1
+Suffix0=
+UniqueIDPath1=\XOWRTKHN
+DocumentName1=Converter.SchDoc
+IsEnabled1=1
+SelectionScope1=All
+Order1=2
+IndexEnabled1=0
+IndexStartValue1=1
+Suffix1=
+UniqueIDPath2=\XOWRTKHN\VCCRWMAY
+DocumentName2=Current_measure.SchDoc
+IsEnabled2=1
+SelectionScope2=All
+Order2=3
+IndexEnabled2=0
+IndexStartValue2=1
+Suffix2=
+UniqueIDPath3=\XOWRTKHN\OGDDITNL
+DocumentName3=Driver_rect.SchDoc
+IsEnabled3=1
+SelectionScope3=All
+Order3=4
+IndexEnabled3=0
+IndexStartValue3=1
+Suffix3=
+UniqueIDPath4=\XOWRTKHN\NQQXFCGC
+DocumentName4=Driver_SW.SchDoc
+IsEnabled4=1
+SelectionScope4=All
+Order4=5
+IndexEnabled4=0
+IndexStartValue4=1
+Suffix4=
+UniqueIDPath5=\YXTMVWTB
+DocumentName5=FAN.SchDoc
+IsEnabled5=1
+SelectionScope5=All
+Order5=6
+IndexEnabled5=0
+IndexStartValue5=1
+Suffix5=
+UniqueIDPath6=\XOWRTKHN\MGOJVBHL
+DocumentName6=Output.SchDoc
+IsEnabled6=1
+SelectionScope6=All
+Order6=7
+IndexEnabled6=0
+IndexStartValue6=1
+Suffix6=
+UniqueIDPath7=\XOWRTKHN\QTBRRYQX
+DocumentName7=SMPS.SchDoc
+IsEnabled7=1
+SelectionScope7=All
+Order7=8
+IndexEnabled7=0
+IndexStartValue7=1
+Suffix7=
+UniqueIDPath8=\WDFQRGEU
+DocumentName8=uC.SchDoc
+IsEnabled8=1
+SelectionScope8=All
+Order8=9
+IndexEnabled8=0
+IndexStartValue8=1
+Suffix8=
+UniqueIDPath9=\XOWRTKHN\BXUPQGBR
+DocumentName9=Voltage_measure.SchDoc
+IsEnabled9=1
+SelectionScope9=All
+Order9=10
+IndexEnabled9=0
+IndexStartValue9=1
+Suffix9=
+UniqueIDPath10=\XOWRTKHN\MJFUXUTM
+DocumentName10=Voltage_measure.SchDoc
+IsEnabled10=1
+SelectionScope10=All
+Order10=11
+IndexEnabled10=0
+IndexStartValue10=1
+Suffix10=
 
 [PrjClassGen]
 CompClassManualEnabled=0
 CompClassManualRoomEnabled=0
-NetClassAutoBusEnabled=1
+NetClassAutoBusEnabled=0
 NetClassAutoCompEnabled=0
 NetClassAutoNamedHarnessEnabled=0
 NetClassManualEnabled=1
@@ -1136,7 +1199,6 @@ PartTypes=0
 FullReplace=1
 UpdateDesignatorLock=1
 UpdatePartIDLock=1
-PreserveParameterLocations=1
 DoGraphics=1
 DoParameters=1
 DoModels=1
