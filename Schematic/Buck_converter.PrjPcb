@@ -51,7 +51,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=YVDUPHDQ
 
 [Document2]
 DocumentPath=uC.SchDoc
@@ -68,7 +68,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=SRKYIGDY
 
 [Document3]
 DocumentPath=SMPS.SchDoc
@@ -85,7 +85,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=DKBXSNPB
 
 [Document4]
 DocumentPath=Converter.SchDoc
@@ -102,7 +102,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=IEFQHMNO
 
 [Document5]
 DocumentPath=Voltage_measure.SchDoc
@@ -119,7 +119,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=SKSNYVAL
 
 [Document6]
 DocumentPath=Driver_SW.SchDoc
@@ -136,7 +136,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=CQRXMDTA
 
 [Document7]
 DocumentPath=Current_measure.SchDoc
@@ -153,7 +153,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=VXTPMKOY
 
 [Document8]
 DocumentPath=Driver_rect.SchDoc
@@ -170,7 +170,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=YALYGEDV
 
 [Document9]
 DocumentPath=Output.SchDoc
@@ -187,7 +187,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=ARJDADEM
 
 [Document10]
 DocumentPath=FAN.SchDoc
@@ -204,7 +204,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=PBCYWFCQ
 
 [Document11]
 DocumentPath=Conv_buck_R1.PcbDoc
@@ -261,191 +261,42 @@ DocumentUniqueId=
 Description=Buck_converter_R0
 AllowFabrication=0
 ParameterCount=0
-VariationCount=5
+VariationCount=28
 Variation1=Designator=X3|UniqueId=\WDFQRGEU\XNYLGKXD|Kind=1|AlternatePart= 
 Variation2=Designator=C41|UniqueId=\WDFQRGEU\VDKLSJBO|Kind=1|AlternatePart= 
 Variation3=Designator=C42|UniqueId=\WDFQRGEU\HHYCNSXE|Kind=1|AlternatePart= 
 Variation4=Designator=S1|UniqueId=\WDFQRGEU\GOXOVCNQ|Kind=0|AlternatePart= 
 Variation5=Designator=C39|UniqueId=\WDFQRGEU\YPFCHVIP|Kind=0|AlternatePart= 
+Variation6=Designator=R18|UniqueId=\XOWRTKHN\NQQXFCGC\QVNKVKNI|Kind=1|AlternatePart= 
+Variation7=Designator=V6|UniqueId=\XOWRTKHN\NQQXFCGC\RFJLSXBU|Kind=1|AlternatePart= 
+Variation8=Designator=C20|UniqueId=\XOWRTKHN\NQQXFCGC\CGYYFAEN|Kind=1|AlternatePart= 
+Variation9=Designator=R9|UniqueId=\XOWRTKHN\OGDDITNL\JJGSXNQN|Kind=1|AlternatePart= 
+Variation10=Designator=V4|UniqueId=\XOWRTKHN\OGDDITNL\HEYQAELO|Kind=1|AlternatePart= 
+Variation11=Designator=C14|UniqueId=\XOWRTKHN\OGDDITNL\XVGUHVVM|Kind=1|AlternatePart= 
+Variation12=Designator=C21|UniqueId=\XOWRTKHN\NQQXFCGC\GUALHJWN|Kind=1|AlternatePart= 
+Variation13=Designator=C13|UniqueId=\XOWRTKHN\OGDDITNL\CGYYFAEN|Kind=1|AlternatePart= 
+Variation14=Designator=C23|UniqueId=\XOWRTKHN\MGOJVBHL\KJQBEORA|Kind=1|AlternatePart= 
+Variation15=Designator=C22|UniqueId=\YXTMVWTB\QJLSXIBL|Kind=1|AlternatePart= 
+Variation16=Designator=XC1|UniqueId=\YXTMVWTB\MOKVVWXA|Kind=1|AlternatePart= 
+Variation17=Designator=R26|UniqueId=\YXTMVWTB\VUDANLCA|Kind=1|AlternatePart= 
+Variation18=Designator=R27|UniqueId=\YXTMVWTB\DSJXLKLG|Kind=1|AlternatePart= 
+Variation19=Designator=R25|UniqueId=\YXTMVWTB\IKMWTORL|Kind=1|AlternatePart= 
+Variation20=Designator=V7|UniqueId=\YXTMVWTB\AHMHMCYP|Kind=1|AlternatePart= 
+Variation21=Designator=R28|UniqueId=\YXTMVWTB\ULFJEIUQ|Kind=1|AlternatePart= 
+Variation22=Designator=R29|UniqueId=\YXTMVWTB\WETQYIAQ|Kind=1|AlternatePart= 
+Variation23=Designator=VP5|UniqueId=\YXTMVWTB\TFHTVXRX|Kind=1|AlternatePart= 
+Variation24=Designator=C9|UniqueId=\XOWRTKHN\VCCRWMAY\ATDHPBUX|Kind=0|AlternatePart= 
+Variation25=Designator=R39|UniqueId=\XOWRTKHN\QTBRRYQX\XKBNTNFH|Kind=1|AlternatePart= 
+Variation26=Designator=VP2|UniqueId=\XOWRTKHN\TKNPPMDC|Kind=1|AlternatePart= 
+Variation27=Designator=VP1|UniqueId=\XOWRTKHN\GHQUYEFL|Kind=1|AlternatePart= 
+Variation28=Designator=L1|UniqueId=\XOWRTKHN\SWOMPKJF|Kind=1|AlternatePart= 
 ParamVariationCount=0
 
 [GeneratedDocument1]
-DocumentPath=Project Outputs for Buck_converter\Board Information - Conv_buck_R1.html
-DItemRevisionGUID=
-
-[GeneratedDocument2]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.DRR
-DItemRevisionGUID=
-
-[GeneratedDocument3]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.DRR
-DItemRevisionGUID=
-
-[GeneratedDocument4]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.DRR
-DItemRevisionGUID=
-
-[GeneratedDocument5]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.EXTREP
-DItemRevisionGUID=
-
-[GeneratedDocument6]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.EXTREP
-DItemRevisionGUID=
-
-[GeneratedDocument7]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.EXTREP
-DItemRevisionGUID=
-
-[GeneratedDocument8]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument9]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument10]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument11]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument12]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument13]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument14]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.GD1
-DItemRevisionGUID=
-
-[GeneratedDocument15]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.GD1
-DItemRevisionGUID=
-
-[GeneratedDocument16]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.GD1
-DItemRevisionGUID=
-
-[GeneratedDocument17]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.GG1
-DItemRevisionGUID=
-
-[GeneratedDocument18]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.GG1
-DItemRevisionGUID=
-
-[GeneratedDocument19]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.GG1
-DItemRevisionGUID=
-
-[GeneratedDocument20]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.GKO
-DItemRevisionGUID=
-
-[GeneratedDocument21]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.GKO
-DItemRevisionGUID=
-
-[GeneratedDocument22]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.GKO
-DItemRevisionGUID=
-
-[GeneratedDocument23]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument24]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument25]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument26]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument27]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument28]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument29]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument30]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument31]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument32]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.LDP
-DItemRevisionGUID=
-
-[GeneratedDocument33]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.LDP
-DItemRevisionGUID=
-
-[GeneratedDocument34]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.LDP
-DItemRevisionGUID=
-
-[GeneratedDocument35]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.REP
-DItemRevisionGUID=
-
-[GeneratedDocument36]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.REP
-DItemRevisionGUID=
-
-[GeneratedDocument37]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.REP
-DItemRevisionGUID=
-
-[GeneratedDocument38]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.RUL
-DItemRevisionGUID=
-
-[GeneratedDocument39]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.RUL
-DItemRevisionGUID=
-
-[GeneratedDocument40]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.RUL
-DItemRevisionGUID=
-
-[GeneratedDocument41]
-DocumentPath=. 25-05-2015 08-32-50\Project Outputs\Buck_Conv_R0.TXT
-DItemRevisionGUID=
-
-[GeneratedDocument42]
-DocumentPath=. 25-05-2015 08-34-14\Project Outputs\Buck_Conv_R0.TXT
-DItemRevisionGUID=
-
-[GeneratedDocument43]
-DocumentPath=. 25-05-2015 08-42-48\Project Outputs\Buck_Conv_R0.TXT
-DItemRevisionGUID=
-
-[GeneratedDocument44]
 DocumentPath=Conv_buck_R0.PcbDoc.htm
 DItemRevisionGUID=
 
-[GeneratedDocument45]
+[GeneratedDocument2]
 DocumentPath=Conv_buck_R1.PcbDoc.htm
 DItemRevisionGUID=
 
