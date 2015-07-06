@@ -1,4 +1,4 @@
-E = 18V
+E = 29V
 C = 10mF
 L = .1mH
 R = 10ohm
